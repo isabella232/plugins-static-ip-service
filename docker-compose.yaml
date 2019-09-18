@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  nginx:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - "./nginx.conf:/etc/nginx/conf.d/proxy.conf:ro"
+    environment:
+      - "PROXY_USER=qqq"
+      - "PROXY_PASSWORD=www"
