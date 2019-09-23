@@ -16,3 +16,8 @@ down: ## Stops Nginx container
 
 sample-call: ## Make sample HTTPbin request
 	curl -X POST -d '{"foo": "bar", "bar": 123}' -H "X-Proxy-Authorization: Bearer foobar" -H "X-Proxy-Host:httpbin.org" -H "X-Proxy-Proto:https" http://qqq:www@localhost:8080/anything/fizz/buzz?aaa=bbb
+
+publish: ## Publish the API Gateway to Docker Cloud
+	docker build -t "emarsys/nginx-proxy-poc:$(shell git rev-parse HEAD)" .
+	docker push "emarsys/nginx-proxy-poc:$(shell git rev-parse HEAD)"
+	docker image rm "emarsys/nginx-proxy-poc:$(shell git rev-parse HEAD)"
