@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  nginx:
+    deploy:
+      labels:
+        traefik.port: 80
+        traefik.frontend.rule: 'Host:${HOSTNAME}'
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1000M
+        reservations:
+          cpus: '0.25'
+          memory: 500M
+      placement:
+        constraints:
+          - node.role == manager
+    image: emarsys/nginx-proxy-poc:973971797bd73cbb62c204182e9297d95ece8eec
+    environment:
+      - 'PROXY_USER=${USERNAME}'
+      - 'PROXY_PASSWORD=${PASSWORD}'
+    networks:
+      - ingress_default
+networks:
+  ingress_default:
+    external: true
