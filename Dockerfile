@@ -9,3 +9,5 @@ RUN apt-get install -y apache2-utils
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 CMD ["/docker-entrypoint.sh"]
+
+EXPOSE 8090

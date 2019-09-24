@@ -4,7 +4,7 @@ services:
   nginx:
     deploy:
       labels:
-        traefik.port: 80
+        traefik.port: 8090
         traefik.frontend.rule: 'Host:${HOSTNAME}'
       replicas: 2
       restart_policy:
