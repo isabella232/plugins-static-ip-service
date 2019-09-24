@@ -15,7 +15,7 @@ down: ## Stops Nginx container
 	docker-compose down
 
 sample-call: ## Make sample HTTPbin request
-	curl -X POST -d '{"foo": "bar", "bar": 123}' -H "X-Proxy-Authorization: Bearer foobar" -H "X-Proxy-Host:httpbin.org" -H "X-Proxy-Proto:https" http://qqq:www@localhost:8080/anything/fizz/buzz?aaa=bbb
+	curl -X POST -d '{"foo": "bar", "bar": 123}' -H "X-Proxy-Authorization: Bearer foobar" -H "X-Proxy-Base-Url:https://httpbin.org" http://qqq:www@localhost:8080/anything/fizz/buzz?aaa=bbb
 
 publish: ## Publish the API Gateway to Docker Cloud
 	docker build -t "emarsys/nginx-proxy-poc:$(shell git rev-parse HEAD)" .

@@ -5,7 +5,7 @@ services:
     deploy:
       labels:
         traefik.port: 8090
-        traefik.frontend.rule: 'Host:${HOSTNAME}'
+        traefik.frontend.rule: 'Host:${FRONTEND}'
       replicas: 2
       restart_policy:
         condition: on-failure
@@ -19,7 +19,7 @@ services:
       placement:
         constraints:
           - node.role == manager
-    image: emarsys/nginx-proxy-poc:973971797bd73cbb62c204182e9297d95ece8eec
+    image: emarsys/nginx-proxy-poc:8393f886547beb12573a24e9af32cb156eabf8e8
     environment:
       - 'PROXY_USER=${USERNAME}'
       - 'PROXY_PASSWORD=${PASSWORD}'
