@@ -23,4 +23,4 @@ publish: ## Publish the API Gateway to Docker Cloud
 	docker image rm "emarsys/nginx-proxy-poc:$(shell git rev-parse HEAD)"
 
 up-from-image:
-	docker run -d --name nginx-proxy-poc -p '8080:80' -e 'PROXY_USER=qqq' -e 'PROXY_PASSWORD=www' emarsys/nginx-proxy-poc:$(shell git rev-parse HEAD)
+	docker run -d --name nginx-proxy-poc -p '8080:8090' -e 'PROXY_USER=qqq' -e 'PROXY_PASSWORD=www' emarsys/nginx-proxy-poc:$(shell git rev-parse HEAD)
