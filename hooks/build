@@ -1,3 +1,4 @@
 #!/bin/bash
 
+echo "Advanced build"
 docker build -f $DOCKERFILE_PATH -t $SOURCE_COMMIT .
