@@ -6,20 +6,24 @@ services:
       labels:
         traefik.port: 8090
         traefik.frontend.rule: 'Host:${FRONTEND}'
-      replicas: 2
+      replicas: 4
+      update_config:
+        parallelism: 2
+        delay: 10s
+        order: start-first
       restart_policy:
         condition: on-failure
       resources:
         limits:
           cpus: '1'
-          memory: 1000M
+          memory: 512M
         reservations:
           cpus: '0.25'
-          memory: 500M
+          memory: 256M
       placement:
         constraints:
           - node.role == manager
-    image: emarsys/nginx-proxy-poc:8393f886547beb12573a24e9af32cb156eabf8e8
+    image: emarsys/nginx-proxy-poc:latest
     environment:
       - 'PROXY_USER=${USERNAME}'
       - 'PROXY_PASSWORD=${PASSWORD}'
