@@ -23,6 +23,8 @@ services:
     environment:
       - 'PROXY_USER=${USERNAME}'
       - 'PROXY_PASSWORD=${PASSWORD}'
+      - 'PROXY_USER_NEW=${NEW_USERNAME}'
+      - 'PROXY_PASSWORD_NEW=${NEW_PASSWORD}'
     networks:
       - ingress_default
 networks:
