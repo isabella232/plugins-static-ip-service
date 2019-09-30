@@ -10,3 +10,5 @@ services:
     environment:
       - "PROXY_USER=qqq"
       - "PROXY_PASSWORD=www"
+      - "PROXY_USER_NEW=aaa"
+      - "PROXY_PASSWORD_NEW=sss"
