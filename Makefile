@@ -6,13 +6,15 @@ help: ## Show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/\(.*\):.*##[ \t]*/    \1 ## /' | sort | column -t -s '##'
 
 build: ## Build Nginx container
-	docker-compose build
+	DOCKER_BUILDKIT=1 docker build -t nginx-proxy-poc .
 
 up: ## Start Nginx container
-	docker-compose up -d
+	docker-compose up
 
 down: ## Stops Nginx container
 	docker-compose down
+
+rebuild: down build up
 
 sample-call: ## Make sample HTTPbin request
 	curl -X POST -d '{"foo": "bar", "bar": 123}' -H "X-Proxy-Authorization: Bearer foobar" -H "X-Proxy-Base-Url:https://httpbin.org" http://qqq:www@localhost:8080/anything/fizz/buzz?aaa=bbb

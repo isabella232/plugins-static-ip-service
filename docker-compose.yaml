@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   nginx:
-    build: .
+    image: nginx-proxy-poc
     ports:
       - "8080:8090"
     volumes:
