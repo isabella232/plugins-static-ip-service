@@ -23,7 +23,7 @@ services:
       placement:
         constraints:
           - node.role == manager
-    image: emarsys/nginx-proxy-poc:latest
+    image: emarsys/plugins-static-ip-service:${COMMIT_HASH:-latest}
     environment:
       - 'PROXY_USER=${USERNAME}'
       - 'PROXY_PASSWORD=${PASSWORD}'
