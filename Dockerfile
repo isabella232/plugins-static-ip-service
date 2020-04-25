@@ -4,6 +4,9 @@ RUN apt-get update \
   && apt-get install -y apache2-utils \
   && apt-get clean
 
+RUN mkdir -p /var/www/default
+COPY error.html /var/www/default/error.html
+
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 RUN rm /etc/nginx/conf.d/default.conf
