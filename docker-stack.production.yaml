@@ -6,6 +6,8 @@ services:
       labels:
         traefik.port: 8090
         traefik.frontend.rule: 'Host:${FRONTEND}'
+        traefik.http.routers.static-ip-service.rule: 'Host(`${FRONTEND}`)'
+        traefik.http.services.static-ip-service.loadbalancer.server.port: 8090
       replicas: 4
       update_config:
         parallelism: 2
