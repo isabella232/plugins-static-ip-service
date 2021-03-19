@@ -1,4 +1,4 @@
-FROM nginx
+FROM nginx:1.19.8
 
 RUN apt-get update \
   && apt-get install -y apache2-utils \
@@ -15,4 +15,3 @@ COPY ./nginx.conf /etc/nginx/conf.d/proxy.conf
 EXPOSE 8090
 
 CMD ["/docker-entrypoint.sh"]
-

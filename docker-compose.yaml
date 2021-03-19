@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   nginx:
-    image: nginx-proxy-poc
+    image: plugins-static-ip-service
     ports:
       - "8080:8090"
     volumes:
