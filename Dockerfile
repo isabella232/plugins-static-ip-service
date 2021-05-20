@@ -1,6 +1,7 @@
-FROM nginx:1.19.8
+FROM nginx:1.19
 
 RUN apt-get update \
+  && apt-get upgrade -y \
   && apt-get install -y apache2-utils \
   && apt-get clean
 
