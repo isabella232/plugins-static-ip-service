@@ -7,6 +7,11 @@ services:
         traefik.port: 8090
         traefik.frontend.rule: 'Host:${FRONTEND}'
         traefik.http.routers.static-ip-service-staging.rule: 'Host(`${FRONTEND}`)'
+        traefik.http.routers.static-ip-service-staging.entrypoints: https
+        traefik.http.routers.static-ip-service-staging.tls: 'true'
+        traefik.http.routers.static-ip-service-staging-http.rule: 'Host(`${FRONTEND}`)'
+        traefik.http.routers.static-ip-service-staging-http.entrypoints: http
+        traefik.http.routers.static-ip-service-staging-http.middlewares: https-redirect@file
         traefik.http.services.static-ip-service-staging.loadbalancer.server.port: 8090
       replicas: 2
       update_config:
